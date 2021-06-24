@@ -39,12 +39,22 @@ under the License.
     </postprocessor>
     -->
 
-    <!-- Request Mappings -->
+    <!-- Request Mappings for createOfbizDemo-->
     <request-map uri="createOfbizDemo">
         <security https="true" auth="true"/>
         <event type="service" invoke="createOfbizDemo"/>
         <response name="success" type="view" value="main"/>
     </request-map>
-    <!-- View Mappings -->
+
+    <!-- Request Mapping for FindOfbizDemo-->
+    <!-- Request Mapping -->
+    <request-map uri="FindOfbizDemo"><security https="true" auth="true"/><response name="success" type="view" value="FindOfbizDemo"/></request-map>
+
+
+    <!-- View Mapping for FindOfbizDemo-->
+    <!-- View Mapping -->
+    <view-map name="FindOfbizDemo" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#FindOfbizDemo"/>
+
+    <!-- View Mappings for createOfbizDemo -->
     <view-map name="main" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#main"/>
 </site-conf>

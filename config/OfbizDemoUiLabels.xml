@@ -35,8 +35,22 @@ under the License.
         <value xml:lang="zh-TW">開�?軟體OFBiz的組�?部分</value>
     </property>
     <property key="OfbizDemoViewPermissionError">
-        <value xml:lang="en">You are not allowed to view this page.</value>
+        <value xml:lang="en_IN">You are not allowed to view this page.</value>
         <value xml:lang="zh">�?�?许你�?览这个页�?�。</value>
         <value xml:lang="zh-TW">�?�?許您檢視這個�?�?�.</value>
     </property>
+
+    <property key="OfbizDemoFind">
+        <value xml:lang="en">Find</value>
+    </property>
+    <property key="OfbizDemoFirstName">
+        <value xml:lang="en">First Name</value>
+    </property>
+    <property key="OfbizDemoId">
+        <value xml:lang="en">OFBiz Demo Id</value>
+    </property>
+    <property key="OfbizDemoLastName">
+        <value xml:lang="en">Last Name</value>
+    </property>
+
 </resource>
