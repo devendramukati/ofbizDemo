@@ -46,6 +46,20 @@ under the License.
         <response name="success" type="view" value="main"/>
     </request-map>
 
+    <!-- Request Mappings for createOfbizDemoByJavaService-->
+    <request-map uri="createOfbizDemo">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createOfbizDemoByJavaService"/>
+        <response name="success" type="view" value="main"/>
+    </request-map>
+
+    <!-- Request Mappings for createOfbizDemoByGroovyService-->
+    <request-map uri="createOfbizDemo">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createOfbizDemoByGroovyService"/>
+        <response name="success" type="view" value="main"/>
+    </request-map>
+
     <!-- Request Mapping for FindOfbizDemo-->
     <!-- Request Mapping -->
     <request-map uri="FindOfbizDemo"><security https="true" auth="true"/><response name="success" type="view" value="FindOfbizDemo"/></request-map>
