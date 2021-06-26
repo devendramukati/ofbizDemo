@@ -73,6 +73,14 @@ under the License.
     <!-- Request Mapping -->
     <request-map uri="FindOfbizDemo"><security https="true" auth="true"/><response name="success" type="view" value="FindOfbizDemo"/></request-map>
 
+    <!--Request Mapping for newly added freemarker and groovy files -->
+    <request-map uri="AddOfbizDemoFtl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="AddOfbizDemoFtl"/>
+    </request-map>
+
+    <!--View Mapping for newly added freemarker and groovy files -->
+    <view-map name="AddOfbizDemoFtl" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#AddOfbizDemoFtl"/>
 
     <!-- View Mapping for FindOfbizDemo-->
     <!-- View Mapping -->
