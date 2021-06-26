@@ -46,6 +46,15 @@ under the License.
         <response name="success" type="view" value="main"/>
     </request-map>
 
+    <!-- Request Mappings for events = OfbizDemoEvents.java-->
+    <request-map uri="createOfbizDemoEvent">
+        <security https="true" auth="true"/>
+        <event type="java" path="com.companyname.ofbizdemo.events.OfbizDemoEvents" invoke="createOfbizDemoEvent"/>
+        <response name="success" type="view" value="main"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
+
+
     <!-- Request Mappings for createOfbizDemoByJavaService-->
     <request-map uri="createOfbizDemo">
         <security https="true" auth="true"/>
