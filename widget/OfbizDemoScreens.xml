@@ -82,7 +82,8 @@ under the License.
                 <script location="component://ofbizDemo/webapp/ofbizDemo/WEB-INF/actions/crud/ListOfbizDemo.groovy"/>
             </actions>
             <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+               <!-- <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}"> -->
+                <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <screenlet title="${uiLabelMap.OfbizDemoListOfbizDemos}">
                             <platform-specific>
@@ -99,5 +100,6 @@ under the License.
             </widgets>
         </section>
     </screen>
+
 
 </screens>
