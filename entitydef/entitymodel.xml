@@ -46,4 +46,32 @@ under the License.
         </relation>
     </entity>
 
+    <view-entity entity-name="PartySupplier"
+                 title="Party, PartyGroup and PartyRole of Supplier View Entity">
+        <member-entity entity-alias="PY" entity-name="Party"/>
+        <member-entity entity-alias="PYGP" entity-name="PartyGroup"/>
+        <member-entity entity-alias="PYR" entity-name="PartyRole"/>
+        <member-entity entity-alias="PER" entity-name="Person"/>
+        <alias-all entity-alias="PY"/>
+        <alias entity-alias="PYGP" name="supplierName" field="groupName"/>
+        <alias entity-alias="PYR" name="roleTypeId"/>
+        <alias entity-alias="PER" name="firstName"/>
+        <alias entity-alias="PER" name="middleName"/>
+        <alias entity-alias="PER" name="lastName"/>
+        <view-link entity-alias="PY" rel-entity-alias="PYGP" rel-optional="true">
+            <key-map field-name="partyId"/>
+        </view-link>
+        <view-link entity-alias="PY" rel-entity-alias="PER" rel-optional="true">
+            <key-map field-name="partyId"/>
+        </view-link>
+        <view-link entity-alias="PY" rel-entity-alias="PYR" rel-optional="true">
+            <key-map field-name="partyId"/>
+       <!-- <entity-condition filter-by-date="true"/>  -->
+        </view-link>
+        <entity-condition>
+            <condition-expr entity-alias="PYR" field-name="roleTypeId" operator="equals" value="SUPPLIER"/>
+            <order-by field-name="supplierName"/>
+        </entity-condition>
+    </view-entity>
+
 </entitymodel>

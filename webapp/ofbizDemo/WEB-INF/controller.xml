@@ -88,4 +88,42 @@ under the License.
 
     <!-- View Mappings for createOfbizDemo -->
     <view-map name="main" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#main"/>
+
+    <!-- Request & View Mappings of SupplierScreen -->
+    <request-map uri="CreateSupplier">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CreateSupplierInfo"/>
+    </request-map>
+
+    <request-map uri="createSupplier">
+        <security https="true" auth="true"/>
+        <!-- <event type="service" invoke="createSupplier"/> -->
+        <event type="java" path ="com.companyname.ofbizdemo.events.SupplierEvents" invoke="createSupplierEvent"/>
+        <response name="success" type="request-redirect" value="CreateSupplier"/>
+        <response name="error" type="request-redirect" value="CreateSupplier"/>
+    </request-map>
+
+    <request-map uri="ListSupplier">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ListSupplierInfo"/>
+    </request-map>
+
+    <request-map uri="SupplierOverview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="SupplierOverviewInfo"/>
+    </request-map>
+
+    <request-map uri="SupplierOverviewDetail">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="SupplierOverviewDetailInfo"/>
+    </request-map>
+
+    <view-map name="CreateSupplierInfo" type="screen" page="component://ofbizDemo/widget/SupplierScreens.xml#CreateSupplier"/>
+
+    <view-map name="ListSupplierInfo" type="screen" page="component://ofbizDemo/widget/SupplierScreens.xml#ListSupplier"/>
+
+    <view-map name="SupplierOverviewInfo" type="screen" page="component://ofbizDemo/widget/SupplierScreens.xml#SupplierOverview"/>
+
+    <view-map name="SupplierOverviewDetailInfo" type="screen" page="component://ofbizDemo/widget/SupplierScreens.xml#SupplierOverviewDetail"/>
+
 </site-conf>

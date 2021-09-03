@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="CreateSupplier">
+        <section>
+            <actions>
+                <set field="parameters.supplierPartyId" value="DemoSupplier"/>
+                <set field="parameters.headerItem" value="main"/> <!-- this highlights the selected menu-item with name "main" -->
+                <set field="titleProperty" value="Welcome Supplier"/>
+                <set field="dummy" value='${groovy:context.partyGroupFromInlineGroovy=from("PartyGroup").where("partyId", parameters.supplierPartyId).queryOne();}'/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroupTest">
+                    <field-map field-name="partyId" from-field="parameters.supplierPartyId"/>
+                </entity-one>
+                <entity-one entity-name="PartyGroup" value-field="partyGroupTest2"/>
+
+                <entity-and entity-name="PartyGroup" list="partyGroupList">
+                    <field-map field-name="partyId" from-field="parameters.supplierPartyId"/>
+                    <order-by field-name="groupName"/>
+                </entity-and>
+                <entity-condition entity-name="PartyGroup" list="partyGroupConditionList">
+                    <condition-expr field-name="partyId" from-field="parameters.supplierPartyId"/>
+                    <order-by field-name="groupName"/>
+                </entity-condition>
+                <script location="component://ofbizDemo/groovyscripts/supplier/CreateSupplier.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.SupplierCreateSupplier}">
+                        <platform-specific>
+                            <html><html-template location="component://ofbizDemo/template/supplier/CreateSupplier.ftl"/></html>
+                        </platform-specific>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ListSupplier">
+        <section>
+            <actions>
+                <!-- this highlights the selected menu-item with name "main" -->
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="List Supplier"/>
+                <script location="component://ofbizDemo/groovyscripts/supplier/ListSupplier.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.SupplierListSupplier}">
+                            <platform-specific>
+                                <html><html-template location="component://ofbizDemo/template/supplier/ListSupplier.ftl"/></html>
+                            </platform-specific>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SupplierOverview">
+        <section>
+            <actions>
+                <!-- this highlights the selected menu-item with name "main" -->
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="Supplier Overview"/>
+                <script location="component://ofbizDemo/groovyscripts/supplier/SupplierOverview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="SupplierDetail"/>
+                        <include-screen name="SupplierAddress"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SupplierDetail">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Supplier Detail Page"/>
+            </actions>
+            <widgets>
+                <screenlet title="${uiLabelMap.SupplierDetail}">
+                    <platform-specific>
+                        <html><html-template location="component://ofbizDemo/template/supplier/SupplierDetail.ftl"/></html>
+                    </platform-specific>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SupplierAddress">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Supplier Address Page"/>
+            </actions>
+            <widgets>
+                <screenlet title="${uiLabelMap.SupplierAddressDetail}">
+                    <platform-specific>
+                        <html><html-template location="component://ofbizDemo/template/supplier/SupplierAddress.ftl"/></html>
+                    </platform-specific>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SupplierOverviewDetail">
+        <section>
+            <actions>
+                <!-- this highlights the selected menu-item with name "main" -->
+                <set field="titleProperty" value="Supplier Overview Detail"/>
+                <script location="component://ofbizDemo/groovyscripts/supplier/SupplierOverview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                            <platform-specific>
+                                <html><html-template location="component://ofbizDemo/template/supplier/SupplierOverviewDetail.ftl"/></html>
+                            </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+</screens>

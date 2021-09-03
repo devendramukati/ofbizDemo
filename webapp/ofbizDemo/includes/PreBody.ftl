@@ -13,7 +13,7 @@
     </#list>
   </head>
   <body data-offset="125">
-    <h4 align="center"> ==================Page PreBody Starts From Decorator Screen========================= </h4>
+  <#--  <h4 align="center"> ==================Page PreBody Starts From Decorator Screen========================= </h4> -->
     <div class="container menus" id="container">
       <div class="row">
         <div class="col-sm-12">
@@ -31,5 +31,5 @@
       <div class="row">
         <div class="col-lg-12 header-col">
           <div id="main-content">
-              <h4 align="center"> ==================Page PreBody Ends From Decorator Screen=========================</h4>
-              <h4 align="center"> ==================Page Body starts From Screen=========================</h4>
+             <#-- <h4 align="center"> ==================Page PreBody Ends From Decorator Screen=========================</h4>
+             <h4 align="center"> ==================Page Body starts From Screen=========================</h4>  -->

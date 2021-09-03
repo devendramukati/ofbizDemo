@@ -1,0 +1,41 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <service name="createSupplierInterface" engine="interface">
+        <!-- Testting Purpose -->
+        <attribute name="isCreate" type="String" mode="IN" optional="true"/>
+
+        <attribute name="supplierName" type="String" mode="IN"/>
+        <attribute name="phoneNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="emailId" type="String" mode="IN" optional="true"/>
+        <attribute name="address1" type="String" mode="IN" optional="true"/>
+        <attribute name="address2" type="String" mode="IN" optional="true"/>
+        <attribute name="city" type="String" mode="IN" optional="true"/>
+        <attribute name="postalCode" type="String" mode="IN" optional="true"/>
+        <attribute name="stateProvinceGeoId" type="String" mode="IN" optional="true"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="true"/>
+        <attribute name="partyId" type="String" mode="OUT"/>
+    </service>
+
+    <service name="createSupplier" engine="java"
+             location="com.companyname.ofbizdemo.services.SupplierServices"
+             invoke="createSupplier" auth="true">
+        <description>Create a supplier using a service in Java</description>
+        <implements service="createSupplierInterface"/>
+        <override name="isCreate" type="String" mode="IN"/>
+    </service>
+
+    <service name="getSuppliers" engine="java"
+             location="com.companyname.ofbizdemo.services.SupplierServices"
+             invoke="getSuppliers" auth="true">
+        <description>Return suppliers using a service in Java</description>
+        <attribute name="suppliers" type="List" mode="OUT" optional="true"/>
+    </service>
+
+    <service name="sendCreateSupplierNotification" engine="java"
+             location="com.companyname.ofbizdemo.services.SupplierServices"
+             invoke="sendCreateSupplierNotification" auth="true">
+        <description>Sends an email notification when a new supplier is created</description>
+        <attribute name="partyIdTo" type="String" mode="IN" optional="true"/>
+    </service>
+
+</services>
